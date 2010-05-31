@@ -49,6 +49,10 @@
 #  define CMAKE_USE_ECLIPSE
 #endif
 
+#if defined(CMAKE_BUILD_WITH_CMAKE)
+#  define CMAKE_USE_NETBEANS
+#endif
+
 #if defined(__MINGW32__) && !defined(CMAKE_BUILD_WITH_CMAKE)
 # define CMAKE_BOOT_MINGW
 #endif
@@ -84,6 +88,7 @@
 
 #if !defined(CMAKE_BOOT_MINGW)
 # include "cmExtraCodeBlocksGenerator.h"
+#include "cmExtraNetBeans69Generator.h"
 #endif
 
 #ifdef CMAKE_USE_KDEVELOP
@@ -92,6 +97,10 @@
 
 #ifdef CMAKE_USE_ECLIPSE
 # include "cmExtraEclipseCDT4Generator.h"
+#endif
+
+#ifdef CMAKE_USE_NETBEANS
+# include "cmExtraNetBeans69Generator.h"
 #endif
 
 #include <stdlib.h> // required for atoi
@@ -1659,6 +1668,11 @@ void cmake::AddDefaultExtraGenerators()
 #ifdef CMAKE_USE_ECLIPSE
   this->AddExtraGenerator(cmExtraEclipseCDT4Generator::GetActualName(),
                           &cmExtraEclipseCDT4Generator::New);
+#endif
+
+#ifdef CMAKE_USE_NETBEANS
+  this->AddExtraGenerator(netbeansgenerator::cmExtraNetBeans69Generator::GetActualName(),
+                          &netbeansgenerator::cmExtraNetBeans69Generator::New);
 #endif
 
 #ifdef CMAKE_USE_KDEVELOP

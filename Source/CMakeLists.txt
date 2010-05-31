@@ -171,6 +171,8 @@ SET(SRCS
   cmExtraCodeBlocksGenerator.h
   cmExtraEclipseCDT4Generator.cxx
   cmExtraEclipseCDT4Generator.h
+  cmExtraNetBeans69Generator.h
+  cmExtraNetBeans69Generator.cxx
   cmFileTimeComparison.cxx
   cmFileTimeComparison.h
   cmGeneratedFileStream.cxx
@@ -244,6 +246,8 @@ SET(SRCS
   cmXMLParser.h
   cmXMLSafe.cxx
   cmXMLSafe.h
+  cmXmlWriter.h
+  cmXmlWriter.cxx
   cmake.cxx
   cmake.h
   cmakewizard.cxx
